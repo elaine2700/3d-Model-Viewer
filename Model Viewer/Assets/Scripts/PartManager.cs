@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PartManager : MonoBehaviour
 {
-    List<Part> parts = new List<Part>();
+    public List<Part> parts = new List<Part>();
     [SerializeField] ColorSettings colorSettings;
 
-    private void Start()
+    private void Awake()
     {
         Part[] partsList = GetComponentsInChildren<Part>();
         foreach(Part part in partsList)

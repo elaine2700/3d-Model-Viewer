@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6919992243750308237}
+  - component: {fileID: 6522292239932574247}
+  - component: {fileID: 1750212713569803404}
   m_Layer: 0
   m_Name: Technical Test Asset
   m_TagString: Untagged
@@ -35,6 +37,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6522292239932574247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729039959813935927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d53b7a282274a2bbc8a0da7eb28479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts: []
+  colorSettings: {fileID: 11400000, guid: b98724c3cd7054e549f3271f5ab1401f, type: 2}
+--- !u!114 &1750212713569803404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729039959813935927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e54bf63f10644ba9595f81b623f4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRayMaterial: {fileID: 2100000, guid: 2852f261490194c70b169a6426f53b68, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 8bd1981b33a8b4935a9c9327244e8a2c, type: 2}
 --- !u!1001 &2893482166652816263
 PrefabInstance:
   m_ObjectHideFlags: 0

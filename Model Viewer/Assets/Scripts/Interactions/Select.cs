@@ -1,9 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Select : MonoBehaviour
 {
-    [SerializeField] float partSpeed = 10f;
-
     Actions inputActions;
     Hover hover;
     Part currentSelection;
@@ -56,9 +55,11 @@ public class Select : MonoBehaviour
     {
         if (currentSelection == null) return;
         if (!canMove) return;
-        
+        //if (!EventSystem.current.IsPointerOverGameObject(0))
+            //return;
+
         Vector3 mousePos = Input.mousePosition;
-        Debug.Log(mousePos);
+        //Debug.Log(mousePos);
         float zDistance = Mathf.Abs(currentSelection.transform.position.z - Camera.main.transform.position.z);
         currentSelection.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance));
         

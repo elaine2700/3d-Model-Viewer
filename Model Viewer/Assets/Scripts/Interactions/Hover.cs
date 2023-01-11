@@ -16,7 +16,6 @@ public class Hover : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log($"Hit on: {hit.transform.name}");
             currentHitTransform = hit.transform;
             // Check if object has Part script.
             if (currentHitTransform != null)
