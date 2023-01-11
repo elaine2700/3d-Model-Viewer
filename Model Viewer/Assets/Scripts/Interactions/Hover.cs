@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 /// <summary>
 /// This class handles the raycast state. When it hover, select, enter and exit.
 /// </summary>
-public class Interaction : MonoBehaviour
+public class Hover : MonoBehaviour
 {
     Part previousHover;
     Part currentHover;
@@ -17,7 +14,7 @@ public class Interaction : MonoBehaviour
         // Hover objects.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             Debug.Log($"Hit on: {hit.transform.name}");
             currentHitTransform = hit.transform;
@@ -30,11 +27,10 @@ public class Interaction : MonoBehaviour
                     currentHover = part;
                 }
             }
-            else
-            {
-                currentHover = null;
-            }
-            
+        }
+        else
+        {
+            currentHover = null;
         }
 
         // ENTER HOVER, EXIT HOVER
@@ -68,5 +64,10 @@ public class Interaction : MonoBehaviour
         }
 
         previousHover = currentHover;
+    }
+
+    public Part GetHighlightedPart()
+    {
+        return currentHover;
     }
 }

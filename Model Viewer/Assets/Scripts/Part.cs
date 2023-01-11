@@ -10,6 +10,7 @@ public class Part : MonoBehaviour
 
     ColorSettings colorSettings;
     MeshRenderer meshRenderer;
+    bool isSelection = false;
 
     private void Start()
     {
@@ -19,22 +20,26 @@ public class Part : MonoBehaviour
 
     public void EnterHover()
     {
+        if (isSelection) return;
         ChangeColor(colorSettings.hoverColor);
     }
 
     public void ExitHover()
     {
+        if (isSelection) return;
         ChangeColor(colorSettings.defaultColor);
     }
 
     public void EnterSelection()
     {
+        isSelection = true;
         ChangeColor(colorSettings.selectedColor);
     }
 
     public void ExitSelection()
     {
         ChangeColor(colorSettings.defaultColor);
+        isSelection = false;
     }
 
     private void ChangeColor(Color newColor)

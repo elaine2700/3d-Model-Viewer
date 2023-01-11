@@ -1,0 +1,94 @@
+{
+    "name": "Actions",
+    "maps": [
+        {
+            "name": "Interactions",
+            "id": "b7e496b7-fedb-439c-b689-83058c9d0602",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "fa2f7c46-1854-465d-a1e3-8937dba07ca2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Button",
+                    "id": "5c7ad31f-d452-41b7-8661-72cbd17cb218",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move All",
+                    "type": "Button",
+                    "id": "eef3e74c-1a13-4065-914b-d9c4578a871c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mouse Movement",
+                    "type": "Value",
+                    "id": "abc3c068-d5ab-437d-8ccb-900475515a06",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1e64530f-4b30-4f80-9c8d-f03aa76f8142",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67cfe0b8-b9ff-4174-9fb8-7d7dfa459d5d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b41c25dc-1cb6-4f92-9291-39108017ce72",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move All",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07d66b57-b573-4f35-869e-984322042e17",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
