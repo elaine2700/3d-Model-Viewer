@@ -25,12 +25,12 @@ public class SideBar : MonoBehaviour
         sideBar.gameObject.SetActive(setDisplay);
         if (setDisplay)
         {
-            //flip scale.
+            // todo Change the image button
             toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "^";
         }
         else
         {
-            // Change the image button
+            // todo Change the image button
             toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "v";
         }
     }

@@ -8,11 +8,11 @@ public class Part : MonoBehaviour
     public UnityEvent enterSelection;
     public UnityEvent exitSelection;
 
+    ModelView modelview;
     ColorSettings colorSettings;
     MeshRenderer meshRenderer;
     bool isSelection = false;
     Material mainMaterial;
-    float colorOpacity = 1f;
     public Material MainMaterial { get { return mainMaterial; } }
 
     private void Start()
@@ -20,6 +20,7 @@ public class Part : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         ChangeColor(colorSettings.defaultColor);
         mainMaterial = meshRenderer.material;
+        modelview = FindObjectOfType<ModelView>();
     }
 
     // todo dont allow if moving a part.
@@ -49,6 +50,7 @@ public class Part : MonoBehaviour
 
     private void ChangeColor(Color newColor)
     {
+        //if(meshRenderer.material == )
         newColor.a = meshRenderer.material.color.a;
         meshRenderer.material.color = newColor;
         
