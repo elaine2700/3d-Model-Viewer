@@ -8,19 +8,24 @@ public class Part : MonoBehaviour
     public UnityEvent enterSelection;
     public UnityEvent exitSelection;
 
-    ModelView modelview;
+    ModelView view;
     ColorSettings colorSettings;
     MeshRenderer meshRenderer;
     bool isSelection = false;
     Material mainMaterial;
     public Material MainMaterial { get { return mainMaterial; } }
 
+    private void Awake()
+    {
+        view = FindObjectOfType<ModelView>();
+    }
+
     private void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         ChangeColor(colorSettings.defaultColor);
         mainMaterial = meshRenderer.material;
-        modelview = FindObjectOfType<ModelView>();
+        
     }
 
     // todo dont allow if moving a part.
@@ -50,10 +55,22 @@ public class Part : MonoBehaviour
 
     private void ChangeColor(Color newColor)
     {
-        //if(meshRenderer.material == )
-        newColor.a = meshRenderer.material.color.a;
-        meshRenderer.material.color = newColor;
         
+        switch (view.modelView)
+        {
+            case ModelView.View.transparent:
+                // todo
+                // different type of material.
+                Debug.Log("Changing color of transparent material");
+                newColor.a = meshRenderer.material.GetColor("_Color").a;
+                meshRenderer.material.SetColor("_Color", newColor);
+
+                break;
+            default:
+                newColor.a = meshRenderer.material.color.a;
+                meshRenderer.material.color = newColor;
+                break;
+        }
     }
 
     public void ChangeMaterial(Material newMaterial)

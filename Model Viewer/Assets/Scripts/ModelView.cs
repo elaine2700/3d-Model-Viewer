@@ -1,20 +1,28 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ModelView : MonoBehaviour
 {
-    public enum view { shaded, xRay, transparent};
-    public view modelView = view.shaded;
+    // Transparent Shader
+    // from: https://gamedev.stackexchange.com/questions/158128/how-to-write-a-transparent-shader-for-a-sprite-that-ignores-transparent-sprites
+
+    public enum View { shaded, xRay, transparent};
+    public View modelView = View.shaded;
+
     [SerializeField] Material xRayMaterial;
     [SerializeField] Material transparentMaterial;
 
     [SerializeField] Material currentMaterial;
     PartManager partManager;
 
-    private void Start()
+    private void Awake()
     {
         partManager = GetComponent<PartManager>();
+    }
+
+    private void Start()
+    {
         FindCurrentMaterial();
+        modelView = View.shaded;
     }
 
     private void FindCurrentMaterial()
@@ -45,15 +53,18 @@ public class ModelView : MonoBehaviour
     public void ChangeToXRayView()
     {
         SetMaterial(xRayMaterial);
+        modelView = View.xRay;
     }
 
     public void ChangeToTransparentView()
     {
         SetMaterial(transparentMaterial);
+        modelView = View.transparent;
     }
 
     public void ChangeToShadedView()
     {
         SetMaterial();
+        modelView = View.shaded;
     }
 }

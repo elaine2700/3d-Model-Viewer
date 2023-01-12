@@ -11,7 +11,7 @@ public class ChangeViews : MonoBehaviour
 
     ModelView modelView;
 
-    private void Start()
+    private void Awake()
     {
         modelView = FindObjectOfType<ModelView>();
     }
