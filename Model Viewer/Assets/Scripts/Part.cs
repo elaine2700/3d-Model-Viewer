@@ -3,10 +3,13 @@ using UnityEngine.Events;
 
 public class Part : MonoBehaviour
 {
-    public UnityEvent exitHover;
-    public UnityEvent enterHover;
-    public UnityEvent enterSelection;
-    public UnityEvent exitSelection;
+    //public UnityEvent exitHover;
+    //public UnityEvent enterHover;
+    //public UnityEvent enterSelection;
+    //public UnityEvent exitSelection;
+
+    [SerializeField] string parentName;
+    [SerializeField] string partName;
 
     ModelView view;
     ColorSettings colorSettings;
@@ -25,7 +28,10 @@ public class Part : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         ChangeColor(colorSettings.defaultColor);
         mainMaterial = meshRenderer.material;
-        
+
+        // Getting information for tree list.
+        parentName = transform.parent.name;
+        partName = transform.name;
     }
 
     // todo dont allow if moving a part.
@@ -55,16 +61,11 @@ public class Part : MonoBehaviour
 
     private void ChangeColor(Color newColor)
     {
-        
         switch (view.modelView)
         {
             case ModelView.View.transparent:
-                // todo
-                // different type of material.
-                Debug.Log("Changing color of transparent material");
                 newColor.a = meshRenderer.material.GetColor("_Color").a;
                 meshRenderer.material.SetColor("_Color", newColor);
-
                 break;
             default:
                 newColor.a = meshRenderer.material.color.a;
