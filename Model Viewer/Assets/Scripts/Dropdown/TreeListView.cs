@@ -31,6 +31,7 @@ public class TreeListView : MonoBehaviour
         DisplayList();
     }
 
+    // Depth-First
     public void DisplayList()
     {
         Debug.Log("Displayig TreeList");
@@ -38,8 +39,10 @@ public class TreeListView : MonoBehaviour
         Stack<Node> nodes = new Stack<Node>();
         nodes.Push(currentNode);
 
-        // count for testing
+        // count for testing todo delete later.
         int count = 0;
+
+        DropdownSection currentSection = null;
         while (nodes != null)
         {
             currentNode = nodes.Pop();
@@ -63,11 +66,15 @@ public class TreeListView : MonoBehaviour
                     // Sections
                     newLabel = Instantiate(prefabSection, contentSpace);
                     newLabel.ConfigureLabel(currentNode.name, currentNode.refObject, true);
+                    currentSection = newLabel.GetComponent<DropdownSection>();
                     break;
                 case 2:
                     // Parts
                     newLabel = Instantiate(prefabElement, contentSpace);
                     newLabel.ConfigureLabel(currentNode.name, currentNode.refObject, false);
+                    // Add to parent section list.
+                    if(currentSection!=null)
+                        newLabel.AddToSection(currentSection);
                     break;
                 default:
                     break;
@@ -77,20 +84,5 @@ public class TreeListView : MonoBehaviour
             if (count >= 40) break;
         }
     }
-
-    // To update list, just sect element SetActive(false),
-    // the heights update automatically.
-
-    // Get parent
-    // Get sections
-    // Get children for each section
-
-    // UI
-    // Section is a dropdown
-    // Children is a new box.
-
-    // When a section is selected
-    // Other sections shift down
-    
 
 }

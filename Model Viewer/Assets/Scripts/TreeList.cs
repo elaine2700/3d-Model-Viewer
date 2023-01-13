@@ -68,30 +68,5 @@ public class TreeList
             currentNode = nodes.Pop();
         }
     }
-
-    /*public void DisplayList()
-    {
-        Debug.Log("Displayig TreeList");
-        Node currentNode = root;
-        Stack<Node> nodes = new Stack<Node>();
-        nodes.Push(currentNode);
-
-        // count for testing
-        int count = 0;
-        while (nodes != null)
-        {
-            currentNode = nodes.Pop();
-            currentNode.children.Reverse();
-            foreach (Node child in currentNode.children)
-            {
-                nodes.Push(child);
-            }
-            string spaces = new String('_', currentNode.level * 2);
-            Debug.Log($"{spaces} {currentNode.name}");
-            count++;
-            if (count >= 5) break;
-        }
-    }*/
-
     
 }
