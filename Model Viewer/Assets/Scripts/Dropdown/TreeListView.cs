@@ -39,11 +39,8 @@ public class TreeListView : MonoBehaviour
         Stack<Node> nodes = new Stack<Node>();
         nodes.Push(currentNode);
 
-        // count for testing todo delete later.
-        int count = 0;
-
         DropdownSection currentSection = null;
-        while (nodes != null)
+        while (nodes.Count > 0)
         {
             currentNode = nodes.Pop();
             currentNode.children.Reverse();
@@ -73,15 +70,16 @@ public class TreeListView : MonoBehaviour
                     newLabel = Instantiate(prefabElement, contentSpace);
                     newLabel.ConfigureLabel(currentNode.name, currentNode.refObject, false);
                     // Add to parent section list.
-                    if(currentSection!=null)
+                    if (currentSection != null)
+                    {
+                        Debug.Log($"New Label: {newLabel.name}");
                         newLabel.AddToSection(currentSection);
+                    }
+                        
                     break;
                 default:
                     break;
             }
-            
-            count++;
-            if (count >= 40) break;
         }
     }
 

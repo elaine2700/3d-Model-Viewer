@@ -1,13 +1,7 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Part : MonoBehaviour
 {
-    //public UnityEvent exitHover;
-    //public UnityEvent enterHover;
-    //public UnityEvent enterSelection;
-    //public UnityEvent exitSelection;
-
     [SerializeField] string parentName;
     [SerializeField] string partName;
 
@@ -34,7 +28,7 @@ public class Part : MonoBehaviour
         partName = transform.name;
     }
 
-    // todo dont allow if moving a part.
+    // todo dont enter if moving a part.
     public void EnterHover()
     {
         if (isSelection) return;

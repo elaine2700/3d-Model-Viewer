@@ -10,10 +10,19 @@ public class DropdownElement : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameField;
 
     Button elementButton;
+    Select selectScript;
+    Image background;
 
     private void Awake()
     {
         elementButton = GetComponent<Button>();
+        selectScript = FindObjectOfType<Select>();
+        background = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void OnEnable()
@@ -25,8 +34,19 @@ public class DropdownElement : MonoBehaviour
     {
         elementButton.onClick.RemoveAllListeners();
     }
-    // Change selected object when this button is clicked.
 
+    public bool TransformIsSelection(Part currentSelection)
+    {
+        if (currentSelection.transform == refObject)
+        {
+            background.color = Color.cyan;
+            return true;
+        }
+        background.color = Color.grey;   
+        return false;
+    }
+
+    // Change selected object when this button is clicked.
     private void SelectObject()
     {
         Debug.Log($"Selecting: {refObject.name}");

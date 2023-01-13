@@ -1,13 +1,17 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class SelectionEvent : UnityEvent<Part> { }
 
 public class Select : MonoBehaviour
 {
+    public SelectionEvent changedSelection;
+
     Actions inputActions;
     Hover hover;
     Part currentSelection;
     bool canMove;
-    Vector2 mouseInput;
 
     private void Awake()
     {
@@ -16,9 +20,12 @@ public class Select : MonoBehaviour
         inputActions.Interactions.Select.performed += _ => SelectPart();
         inputActions.Interactions.Select.performed += _ => canMove = true;
         inputActions.Interactions.Select.canceled += _ => canMove = false;
+    }
 
-        inputActions.Interactions.MouseMovement.performed += cntxt => mouseInput = cntxt.ReadValue<Vector2>();
-        inputActions.Interactions.MouseMovement.canceled += _ => mouseInput = Vector2.zero;
+    private void Start()
+    {
+        if (changedSelection == null)
+            changedSelection = new SelectionEvent();
     }
 
     private void Update()
@@ -49,6 +56,7 @@ public class Select : MonoBehaviour
             currentSelection.ExitSelection();
         part.EnterSelection();
         currentSelection = part;
+        changedSelection.Invoke(currentSelection);
     }
 
     private void MovePart()
