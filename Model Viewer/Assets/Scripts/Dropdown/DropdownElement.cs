@@ -20,11 +20,6 @@ public class DropdownElement : MonoBehaviour
         background = GetComponent<Image>();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         elementButton.onClick.AddListener(SelectObject);
@@ -50,6 +45,9 @@ public class DropdownElement : MonoBehaviour
     private void SelectObject()
     {
         Debug.Log($"Selecting: {refObject.name}");
+        refObject.TryGetComponent<Part>(out Part partRef);
+        if(partRef != null)
+            selectScript.SelectPart(partRef);
     }
 
     private void SetName(string labelName)

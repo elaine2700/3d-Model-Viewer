@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DropdownSection : MonoBehaviour
 {
     [SerializeField] List<DropdownElement> sectionElements;
-
+    DropdownElement selectedElement = null;
     Select selectScript;
     Button sectionButton;
     bool opened = false;
@@ -36,6 +36,7 @@ public class DropdownSection : MonoBehaviour
 
     private void DisplaySectionElements(bool show)
     {
+        if (opened == show) return;
         opened = show;
         if (sectionElements.Count == 0) return;
         foreach(DropdownElement element in sectionElements)
@@ -54,7 +55,6 @@ public class DropdownSection : MonoBehaviour
             if (element.TransformIsSelection(currentSelection))
             {
                 DisplaySectionElements(true);
-                return;
             }   
         }
     }

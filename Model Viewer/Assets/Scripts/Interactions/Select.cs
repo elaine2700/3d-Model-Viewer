@@ -17,7 +17,7 @@ public class Select : MonoBehaviour
     {
         hover = GetComponent<Hover>();
         inputActions = new Actions();
-        inputActions.Interactions.Select.performed += _ => SelectPart();
+        inputActions.Interactions.Select.performed += _ => SelectPart(hover.GetHighlightedPart());
         inputActions.Interactions.Select.performed += _ => canMove = true;
         inputActions.Interactions.Select.canceled += _ => canMove = false;
     }
@@ -43,14 +43,13 @@ public class Select : MonoBehaviour
         inputActions.Disable();
     }
 
-    private void SelectPart()
+    public void SelectPart(Part part)
     {
-        Part part = hover.GetHighlightedPart();
+        //Part part = hover.GetHighlightedPart();
         if (part == null)
         {
             return;
         }
-        canMove = true;
         // change current selection, to change highlight.
         if (currentSelection != null)
             currentSelection.ExitSelection();
