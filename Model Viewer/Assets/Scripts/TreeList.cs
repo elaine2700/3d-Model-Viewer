@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Node
     public int level = 0;
     public Transform refObject;
     public List<Node> children = new List<Node>();
+    public Node parent = null;
 
     public Node(Transform nodeObject, int nodeLevel = 0)
     {
@@ -15,39 +17,29 @@ public class Node
         this.name = nodeObject.name;
         this.children = new List<Node>();
         this.level = nodeLevel;
-    }   
+    }
 }
 
-public class TreeList : MonoBehaviour
+public class TreeList
 {
-    
-    [SerializeField] Transform rootObject;
-    
+    Transform rootObject;
     Node root;
+    public Node Root { get { return root; } }
 
-    private void Start()
+    public TreeList(Transform rootTransform)
     {
-        if (rootObject == null)
-        {
-            Debug.LogWarning("Add a root Object to Tree List to view hierarchy");
-            // todo Disable side bar.
-            return;
-        }
-            
+        this.rootObject = rootTransform;
         root = new Node(rootObject);
         PopulateList();
-
-        foreach(Node node in root.children)
-        {
-            Debug.Log($"Section: {node.name}");
-        }
     }
 
     private Node AddNode(Transform newObject, Node parent)
     {
         Node newNode = new Node(newObject);
         parent.children.Add(newNode);
-
+        newNode.parent = parent;
+        if (newNode.parent != null)
+            newNode.level = newNode.parent.level + 1;
         return newNode;
     }
 
@@ -61,16 +53,14 @@ public class TreeList : MonoBehaviour
         // while currentNode is not null
         while (currentNode != null)
         {
-            
-
             // Get current Transform -direct children-, make them nodes, and add them to stack
             if (currentNode.refObject.childCount > 0)
-            {
+            {                
                 foreach (Transform transform in currentNode.refObject)
                 {
                     Node newNode = AddNode(transform, currentNode);
                     nodes.Push(newNode);
-                    Debug.Log($"Adding {newNode.refObject.name} to list");
+                    //Debug.Log($"Adding {newNode.refObject.name} to list, level {newNode.level}");
                 }
             }
 
@@ -79,18 +69,29 @@ public class TreeList : MonoBehaviour
         }
     }
 
-    // Get parent
-    // Get sections
-    // Get children for each section
+    /*public void DisplayList()
+    {
+        Debug.Log("Displayig TreeList");
+        Node currentNode = root;
+        Stack<Node> nodes = new Stack<Node>();
+        nodes.Push(currentNode);
 
-    // UI
-    // Section is a dropdown
-    // Children is a new box.
+        // count for testing
+        int count = 0;
+        while (nodes != null)
+        {
+            currentNode = nodes.Pop();
+            currentNode.children.Reverse();
+            foreach (Node child in currentNode.children)
+            {
+                nodes.Push(child);
+            }
+            string spaces = new String('_', currentNode.level * 2);
+            Debug.Log($"{spaces} {currentNode.name}");
+            count++;
+            if (count >= 5) break;
+        }
+    }*/
 
-    // When a section is selected
-    // Other sections shift down
-    // Next section checks if dropdown parent is opened
-    // if open, see last children position
-    // set section position, after last children.
-    // And do the same for all sections.
+    
 }
