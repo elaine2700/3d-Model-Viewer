@@ -4,6 +4,7 @@ public class Part : MonoBehaviour
 {
     [SerializeField] string parentName;
     [SerializeField] string partName;
+    public string PartName { get { return partName; } }
 
     ModelView view;
     ColorSettings colorSettings;
