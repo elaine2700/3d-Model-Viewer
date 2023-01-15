@@ -6,6 +6,10 @@ using TMPro;
 
 public class SideBar : MonoBehaviour
 {
+    [SerializeField] Sprite openSprite;
+    [SerializeField] Sprite closedSprite;
+    [SerializeField] Image imageToChange;
+
     [SerializeField] Button toogleSideBarButton;
     [SerializeField] RectTransform sideBar;
 
@@ -21,17 +25,19 @@ public class SideBar : MonoBehaviour
 
     private void DisplaySideBar()
     {
-        bool setDisplay = !sideBar.gameObject.activeSelf;
-        sideBar.gameObject.SetActive(setDisplay);
-        if (setDisplay)
+        bool openSideBar = !sideBar.gameObject.activeSelf;
+        sideBar.gameObject.SetActive(openSideBar);
+        if (openSideBar)
         {
             // todo Change the image button
-            toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "^";
+            imageToChange.sprite = openSprite;
+            //toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "^";
         }
         else
         {
             // todo Change the image button
-            toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "v";
+            imageToChange.sprite = closedSprite;
+            //toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "v";
         }
     }
 }

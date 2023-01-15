@@ -8,6 +8,7 @@ public class DropdownElement : MonoBehaviour
 {
     public Transform refObject;
     [SerializeField] TextMeshProUGUI nameField;
+    [SerializeField] ColorSettings colorSettings;
 
     Button elementButton;
     Select selectScript;
@@ -34,10 +35,11 @@ public class DropdownElement : MonoBehaviour
     {
         if (currentSelection.transform == refObject)
         {
-            background.color = Color.cyan;
+            background.color = colorSettings.selectedColor;
             return true;
         }
-        background.color = Color.grey;   
+
+        background.color = colorSettings.defaultColor;   
         return false;
     }
 

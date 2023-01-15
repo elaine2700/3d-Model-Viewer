@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class DropdownSection : MonoBehaviour
 {
+    [SerializeField] Sprite closedSprite;
+    [SerializeField] Sprite openSprite;
+    [SerializeField] Image arrowField;
+
     [SerializeField] List<DropdownElement> sectionElements;
     DropdownElement selectedElement = null;
     Select selectScript;
@@ -38,6 +42,13 @@ public class DropdownSection : MonoBehaviour
     {
         if (opened == show) return;
         opened = show;
+
+        // Changing Sprite 
+        if (opened)
+            arrowField.sprite = openSprite;
+        else
+            arrowField.sprite = closedSprite;
+
         if (sectionElements.Count == 0) return;
         foreach(DropdownElement element in sectionElements)
         {
