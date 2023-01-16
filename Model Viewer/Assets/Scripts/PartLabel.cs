@@ -39,19 +39,27 @@ public class PartLabel : MonoBehaviour
     /// <param name="currentSelection"></param>
     private void ChangeNameText(Part currentSelection)
     {
+        currentPart = currentSelection;
+        if (currentSelection == null) return;
         gameObject.SetActive(true);
         nameField.text = currentSelection.PartName;
-        currentPart = currentSelection;
     }
 
     private void MoveLabel()
     {
-        if (currentPart == null) return;
-        Vector3 objectInScreenPos = Camera.main.WorldToScreenPoint(currentPart.transform.position);
-        Vector3 labelPos = new Vector3(
-            objectInScreenPos.x + offset.x,
-            objectInScreenPos.y + offset.y,
-            objectInScreenPos.z);
-        transform.position = labelPos;
+        if (currentPart == null)
+        {
+            transform.position = new Vector3(-100.0f, 0.0f, 0f);
+            return;
+        }
+        else
+        {
+            Vector3 objectInScreenPos = Camera.main.WorldToScreenPoint(currentPart.transform.position);
+            Vector3 labelPos = new Vector3(
+                objectInScreenPos.x + offset.x,
+                objectInScreenPos.y + offset.y,
+                objectInScreenPos.z);
+            transform.position = labelPos;
+        }
     }
 }

@@ -34,6 +34,7 @@ public class DropdownElement : MonoBehaviour
 
     public bool TransformIsSelection(Part currentSelection)
     {
+        if (currentSelection == null) return false;
         if (currentSelection.transform == refObject)
         {
             background.color = colorSettings.selectedColor;
@@ -48,7 +49,7 @@ public class DropdownElement : MonoBehaviour
     private void SelectObject()
     {
         selectScript.canMove = false;
-        Debug.Log($"Selecting: {refObject.name}");
+        //Debug.Log($"Selecting: {refObject.name}");
         refObject.TryGetComponent<Part>(out Part partRef);
         if(partRef != null)
         {

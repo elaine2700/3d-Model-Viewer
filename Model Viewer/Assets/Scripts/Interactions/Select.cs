@@ -53,15 +53,17 @@ public class Select : MonoBehaviour
 
     public void SelectPart(Part part)
     {
-        if (part == null)
-        {
-            return;
-        }
-        // Get offset
-        partOffset = part.transform.position - hover.GetHitPosition();
         // change current selection, to change highlight.
         if (currentSelection != null)
             currentSelection.ExitSelection();
+        if (part == null)
+        {
+            currentSelection = null;
+            changedSelection.Invoke(null);
+            return;
+        }
+        // Get offset of new selection
+        partOffset = part.transform.position - hover.GetHitPosition();
         part.EnterSelection();
         currentSelection = part;
         changedSelection.Invoke(currentSelection);

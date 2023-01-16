@@ -40,8 +40,6 @@ public class Rotate : MonoBehaviour
 
     private void RotateModel()
     {
-        Debug.Log("Rotating model");
-        Debug.Log($"Rotation input {rotationInput.normalized}");
         Vector3 rotDir = new Vector3(0, -rotationInput.x, rotationInput.y).normalized;
         target.Rotate(rotDir * speed * Time.deltaTime);
     }
