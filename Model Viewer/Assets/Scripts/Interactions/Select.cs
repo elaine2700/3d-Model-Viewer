@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class SelectionEvent : UnityEvent<Part> { }
@@ -8,10 +9,13 @@ public class Select : MonoBehaviour
 {
     public SelectionEvent changedSelection;
 
+    [SerializeField] Vector3 partOffset = Vector3.zero;
+
     Actions inputActions;
     Hover hover;
     Part currentSelection;
-    bool canMove;
+    public bool canMove;
+    
 
     private void Awake()
     {
@@ -50,6 +54,8 @@ public class Select : MonoBehaviour
         {
             return;
         }
+        // Get offset
+        partOffset = part.transform.position - hover.GetHitPosition();
         // change current selection, to change highlight.
         if (currentSelection != null)
             currentSelection.ExitSelection();
@@ -68,7 +74,10 @@ public class Select : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         //Debug.Log(mousePos);
         float zDistance = Mathf.Abs(currentSelection.transform.position.z - Camera.main.transform.position.z);
-        currentSelection.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance));
+        Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance));
+        partOffset.z = 0;
+        currentSelection.transform.position = screenPos + partOffset;
+
         
     }
 }

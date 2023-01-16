@@ -46,10 +46,13 @@ public class DropdownElement : MonoBehaviour
     // Change selected object when this button is clicked.
     private void SelectObject()
     {
+        selectScript.canMove = false;
         Debug.Log($"Selecting: {refObject.name}");
         refObject.TryGetComponent<Part>(out Part partRef);
         if(partRef != null)
+        {
             selectScript.SelectPart(partRef);
+        }    
     }
 
     private void SetName(string labelName)

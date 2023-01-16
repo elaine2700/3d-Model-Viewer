@@ -8,15 +8,16 @@ public class Hover : MonoBehaviour
     Part previousHover;
     Part currentHover;
     Transform currentHitTransform;
+    RaycastHit hitInfo;
 
     void Update()
     {
         // Hover objects.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        //RaycastHit hit;
+        if (Physics.Raycast(ray, out hitInfo))
         {
-            currentHitTransform = hit.transform;
+            currentHitTransform = hitInfo.transform;
             // Check if object has Part script.
             if (currentHitTransform != null)
             {
@@ -63,6 +64,11 @@ public class Hover : MonoBehaviour
         }
 
         previousHover = currentHover;
+    }
+
+    public Vector3 GetHitPosition()
+    {
+        return hitInfo.point;
     }
 
     public Part GetHighlightedPart()

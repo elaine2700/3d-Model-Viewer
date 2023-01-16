@@ -10,10 +10,12 @@ public class ChangeViews : MonoBehaviour
     [SerializeField] Button shadedButton;
 
     ModelView modelView;
+    Select selectScript;
 
     private void Awake()
     {
         modelView = FindObjectOfType<ModelView>();
+        selectScript = FindObjectOfType<Select>();
     }
 
     private void OnEnable()
@@ -41,18 +43,21 @@ public class ChangeViews : MonoBehaviour
     private void XRayView()
     {
         Debug.Log("Changing to XrayView");
+        selectScript.canMove = false;
         modelView.ChangeToXRayView();
     }
 
     private void ShadedView()
     {
         Debug.Log("ShadedView");
+        selectScript.canMove = false;
         modelView.ChangeToShadedView();
     }
 
     private void TransparentView()
     {
         Debug.Log("Changing to Transparent View");
+        selectScript.canMove = false;
         modelView.ChangeToTransparentView();
     }
 }
