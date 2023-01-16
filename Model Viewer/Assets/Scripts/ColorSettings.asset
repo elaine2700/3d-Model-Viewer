@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ColorSettings
   m_EditorClassIdentifier: 
   defaultColor: {r: 0.6929957, g: 0.7296752, b: 0.8207547, a: 1}
-  hoverColor: {r: 0, g: 0.46900558, b: 1, a: 1}
+  hoverColor: {r: 0.30558026, g: 0.44285935, b: 0.5943396, a: 1}
   selectedColor: {r: 1, g: 0.48584908, b: 0.48584908, a: 1}
