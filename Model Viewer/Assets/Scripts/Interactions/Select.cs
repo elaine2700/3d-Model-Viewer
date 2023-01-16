@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 [System.Serializable]
 public class SelectionEvent : UnityEvent<Part> { }
 
+/// <summary>
+/// Manages the interaction with the model individual parts.
+/// It can select and move every part.
+/// </summary>
 public class Select : MonoBehaviour
 {
     public SelectionEvent changedSelection;
@@ -49,7 +53,6 @@ public class Select : MonoBehaviour
 
     public void SelectPart(Part part)
     {
-        //Part part = hover.GetHighlightedPart();
         if (part == null)
         {
             return;
@@ -72,12 +75,10 @@ public class Select : MonoBehaviour
             //return;
 
         Vector3 mousePos = Input.mousePosition;
-        //Debug.Log(mousePos);
         float zDistance = Mathf.Abs(currentSelection.transform.position.z - Camera.main.transform.position.z);
         Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance));
         partOffset.z = 0;
         currentSelection.transform.position = screenPos + partOffset;
 
-        
     }
 }

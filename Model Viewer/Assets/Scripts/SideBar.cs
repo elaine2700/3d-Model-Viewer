@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
+/// <summary>
+/// Hides/Display the side bar.
+/// </summary>
 public class SideBar : MonoBehaviour
 {
     [SerializeField] Sprite openSprite;
@@ -29,15 +29,11 @@ public class SideBar : MonoBehaviour
         sideBar.gameObject.SetActive(openSideBar);
         if (openSideBar)
         {
-            // todo Change the image button
             imageToChange.sprite = openSprite;
-            //toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "^";
         }
         else
         {
-            // todo Change the image button
             imageToChange.sprite = closedSprite;
-            //toogleSideBarButton.GetComponentInChildren<TextMeshProUGUI>().text = "v";
         }
     }
 }

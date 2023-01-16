@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Changes the material on all the model parts depending on the current view.
+/// </summary>
 public class ModelView : MonoBehaviour
 {
     // Transparent Shader
@@ -31,6 +34,10 @@ public class ModelView : MonoBehaviour
         currentMaterial = meshRenderer.material;
     }
 
+    /// <summary>
+    /// Change material to a new one.
+    /// </summary>
+    /// <param name="newMaterial"></param>
     private void SetMaterial(Material newMaterial)
     {
         if (newMaterial == currentMaterial) return;
@@ -41,6 +48,9 @@ public class ModelView : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This function is used to change back to the main material's model.
+    /// </summary>
     private void SetMaterial()
     {
         currentMaterial = partManager.parts[0].MainMaterial;

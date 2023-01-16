@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// This class refers to every element on the side bar.
+/// </summary>
 public class DropdownElement : MonoBehaviour
 {
     public Transform refObject;

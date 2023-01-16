@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// A pop up small window that shows the name of the current selection.
+/// It moves on the screen with the current selection's position.
+/// </summary>
 public class PartLabel : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nameField;
@@ -31,6 +33,10 @@ public class PartLabel : MonoBehaviour
         selectScript.changedSelection.RemoveAllListeners();
     }
 
+    /// <summary>
+    /// Function called when the current selection changes.
+    /// </summary>
+    /// <param name="currentSelection"></param>
     private void ChangeNameText(Part currentSelection)
     {
         gameObject.SetActive(true);

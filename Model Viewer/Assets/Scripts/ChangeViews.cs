@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This class subscribes to the buttons on the main bar.
+/// When their onClick event is invoked, it changes to a new view: xRay, shaded, or transparent.
+/// </summary>
 public class ChangeViews : MonoBehaviour
 {
     [SerializeField] Button resetButton;
@@ -42,21 +46,18 @@ public class ChangeViews : MonoBehaviour
 
     private void XRayView()
     {
-        Debug.Log("Changing to XrayView");
         selectScript.canMove = false;
         modelView.ChangeToXRayView();
     }
 
     private void ShadedView()
     {
-        Debug.Log("ShadedView");
         selectScript.canMove = false;
         modelView.ChangeToShadedView();
     }
 
     private void TransparentView()
     {
-        Debug.Log("Changing to Transparent View");
         selectScript.canMove = false;
         modelView.ChangeToTransparentView();
     }

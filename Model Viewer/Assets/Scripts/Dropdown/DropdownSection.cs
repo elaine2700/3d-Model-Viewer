@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A Dropdown section is every element on the sidebar with
+/// a level 1 (starts at 0) on the TreeList structure.
+/// </summary>
 public class DropdownSection : MonoBehaviour
 {
     [SerializeField] Sprite closedSprite;
@@ -10,7 +14,7 @@ public class DropdownSection : MonoBehaviour
     [SerializeField] Image arrowField;
 
     [SerializeField] List<DropdownElement> sectionElements;
-    DropdownElement selectedElement = null;
+
     Select selectScript;
     Button sectionButton;
     bool opened = false;

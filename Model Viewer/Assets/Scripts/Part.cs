@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Part : MonoBehaviour
 {
-    [SerializeField] string parentName;
     [SerializeField] string partName;
     public string PartName { get { return partName; } }
 
@@ -24,12 +23,9 @@ public class Part : MonoBehaviour
         ChangeColor(colorSettings.defaultColor);
         mainMaterial = meshRenderer.material;
 
-        // Getting information for tree list.
-        parentName = transform.parent.name;
         partName = transform.name;
     }
 
-    // todo dont enter if moving a part.
     public void EnterHover()
     {
         if (isSelection) return;

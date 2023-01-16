@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Hides/display the help section. It shows the mapping of the mouse inputs.
+/// </summary>
 public class HelpButton : MonoBehaviour
 {
     [SerializeField] Image helpPicture;

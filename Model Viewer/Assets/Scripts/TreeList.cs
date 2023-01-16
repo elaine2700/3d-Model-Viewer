@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +18,9 @@ public class Node
     }
 }
 
+/// <summary>
+/// Get the model structure to create the tree.
+/// </summary>
 public class TreeList
 {
     Transform rootObject;
@@ -48,7 +49,6 @@ public class TreeList
     {
         Node currentNode = root;
         Stack<Node> nodes = new Stack<Node>();
-        //nodes.Push(currentNode);
 
         // while currentNode is not null
         while (currentNode != null)
@@ -60,7 +60,6 @@ public class TreeList
                 {
                     Node newNode = AddNode(transform, currentNode);
                     nodes.Push(newNode);
-                    //Debug.Log($"Adding {newNode.refObject.name} to list, level {newNode.level}");
                 }
             }
 

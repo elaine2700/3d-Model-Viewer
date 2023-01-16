@@ -1,10 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// todo new name TreeList View
+/// <summary>
+/// Instantiates DropdownElements to the sideBar to see the model structure in a Tree List view.
+/// </summary>
 public class TreeListView : MonoBehaviour
 {
     [Header("Model Data")]
@@ -20,11 +20,9 @@ public class TreeListView : MonoBehaviour
 
     private void Start()
     {
-
         if (rootObject == null)
         {
             Debug.LogWarning("Add a root Object to Tree List to view hierarchy");
-            // todo Disable side bar.
             return;
         }
         modelList = new TreeList(rootObject);
@@ -34,7 +32,6 @@ public class TreeListView : MonoBehaviour
     // Depth-First
     public void DisplayList()
     {
-        Debug.Log("Displayig TreeList");
         Node currentNode = modelList.Root;
         Stack<Node> nodes = new Stack<Node>();
         nodes.Push(currentNode);
@@ -48,8 +45,6 @@ public class TreeListView : MonoBehaviour
             {
                 nodes.Push(child);
             }
-            string spaces = new String('_', currentNode.level * 2);
-            Debug.Log($"{spaces} {currentNode.name}");
 
             // Instantiating List Elements
             DropdownElement newLabel = null;
@@ -72,10 +67,8 @@ public class TreeListView : MonoBehaviour
                     // Add to parent section list.
                     if (currentSection != null)
                     {
-                        Debug.Log($"New Label: {newLabel.name}");
                         newLabel.AddToSection(currentSection);
-                    }
-                        
+                    }   
                     break;
                 default:
                     break;
