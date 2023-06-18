@@ -12,6 +12,7 @@ public class ChangeViews : MonoBehaviour
     [SerializeField] Button xRayButton;
     [SerializeField] Button transparentButton;
     [SerializeField] Button shadedButton;
+    public float testFloat;
 
     ModelView modelView;
     Select selectScript;
